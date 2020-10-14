@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ECommerce.Core.Model.Entity.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Siparişlerim</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Sipariş Durumu
+        </th>
+        <th>
+            Sipariş Numarası
+        </th>
+        <th>
+            Adres Başlığı
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th>
+            Oluşturma Tarihi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAddress.Title)
+        </td>
+        <td>
+            @item.TotalPrice.ToString("##,## TL")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Sipariş Detayı", "Detail", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>

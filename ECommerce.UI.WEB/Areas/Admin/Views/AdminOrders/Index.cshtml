@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ECommerce.Core.Model.Entity.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table-striped">
+    <tr>
+        <th scope="col">
+            Sipariş Durumu
+        </th>
+        <th scope="col">
+            Alıcı Bilgileri
+        </th>
+        <th scope="col">
+            Adres Başlığı
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalProductPrice)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.TotalTaxPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalDiscountPrice)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.CreateUserID)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.UpdateUserID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Name)
+            @Html.DisplayFor(modelItem => item.User.LastName)-
+            @Html.DisplayFor(modelItem => item.User.Email)-
+            @Html.DisplayFor(modelItem => item.User.Telephone)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAddress.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalProductPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalTaxPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalDiscountPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateUserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateUserID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

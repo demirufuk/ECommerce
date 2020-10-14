@@ -1,0 +1,71 @@
+﻿@model ECommerce.Core.Model.Entity.Order
+@{
+    /**/
+
+    ViewBag.Title = "Sipariş Detay";
+}
+
+<h2>@Model.ID Numaralı Siparişinizin Durumu : @Model.Status.Name</h2>
+
+<b>Banka Bilgileri</b>
+<table class="table table-striped">
+    <tr>
+        <td>Banka</td>
+        <td>İş Bankası</td>
+    </tr>
+    <tr>
+        <td>Iban No</td>
+        <td>TR213213213222111</td>
+    </tr>
+    <tr>
+        <td>Alıcı Adı</td>
+        <td>Ufuk Demir</td>
+    </tr>
+</table>
+@{
+    if (Model.StatusID == 2)
+    {
+        <a href="/order/pay?id=@Model.ID" class="btn btn-warning">Ödeme Yaptım</a>
+    }
+}
+<br /><br />
+
+<b>Sipariş Bilgileri</b>
+<table class="table table-striped">
+    <tr>
+        <td>Ürünler Toplamı</td>
+        <td>@Model.TotalProductPrice.ToString("##,## TL")</td>
+    </tr>
+    <tr>
+        <td>İndirim Toplamı</td>
+        <td>@Model.TotalDiscountPrice.ToString("##,## TL")</td>
+    </tr>
+    <tr>
+        <td>Vergi Toplamı</td>
+        <td>@Model.TotalTaxPrice.ToString("##,## TL")</td>
+    </tr>
+    <tr>
+        <td>Toplam</td>
+        <td>@Model.TotalPrice.ToString("##,## TL")</td>
+    </tr>
+</table>
+<br />
+<br />
+<b>Ürün Bilgileri</b>
+<table class="table table-striped">
+    <tr>
+        <th>Ürün</th>
+        <th>Adet</th>
+        <th>Ürün Fiyatı</th>
+    </tr>
+    @{
+        foreach (var item in Model.OrderProducts)
+        {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.Quantity</td>
+                <td>@item.Product.Price.ToString("##,## TL")</td>
+            </tr>
+        }
+    }
+</table>

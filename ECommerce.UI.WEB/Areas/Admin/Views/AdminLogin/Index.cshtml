@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Paneli Giriş</title>
+</head>
+<body>
+    <form method="post">
+        <div>
+            @Html.Label("Email")
+            @Html.TextBox("Email")
+            <br />
+            @Html.Label("Şifre")
+            @Html.Password("Password")
+            <br />
+            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+        </div>
+    </form>
+</body>
+</html>
